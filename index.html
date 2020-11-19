@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello Feathers</title>
+  </head>
+  <body>
+    <main id="main" class="container">
+      <h1>Welcome to Feathers</h1>
+      <form class="form" onsubmit="sendMessage(event.preventDefault())">
+        <input type="text" id="message-text" placeholder="Enter message here" />
+        <button type="submit">submit</button>
+      </form>
+    </main>
+    <script>
+      //unpkg.com/@feathersjs/client@4.5.10/dist/feathers.js
+    </script>
+    <script>
+      //codnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js
+    </script>
+    <script>
+      const socket = io();
+      const app = feathers();
+
+      app.configure(feathers.socketio(socket));
+    </script>
+  </body>
+</html>
