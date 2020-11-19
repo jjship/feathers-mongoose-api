@@ -13,17 +13,21 @@
         <button type="submit">submit</button>
       </form>
     </main>
-    <script>
-      //unpkg.com/@feathersjs/client@4.5.10/dist/feathers.js
-    </script>
-    <script>
-      //codnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js
-    </script>
+    <script src="//unpkg.com/@feathersjs/client@4.5.10/dist/feathers.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <script>
       const socket = io();
       const app = feathers();
 
       app.configure(feathers.socketio(socket));
+
+      async function sendMessage() {
+        const messageInput = document.getElementById('message-text');
+        await app.service('messages').create({
+          text: messageInput.value,
+        });
+        messageInput.value = '';
+      }
     </script>
   </body>
 </html>
