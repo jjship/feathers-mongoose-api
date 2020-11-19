@@ -21,3 +21,26 @@ class MessageService {
 }
 
 app.use('messages', new MessageService());
+
+app.service('messages').on('created', (message) => {
+  console.log('A new message has been created', message);
+});
+
+const main = async () => {
+  try {
+    await app.service('messages').create({
+      text: 'Hello Feathers',
+    });
+
+    await app.service('messages').create({
+      text: 'Hello again',
+    });
+
+    const messages = await app.service('messages').find();
+    console.log('All messages', messages);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+main();
