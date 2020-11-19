@@ -48,3 +48,7 @@ app.publish(() => app.chanel('everybody'));
 app.listen(3030).on('listening', () => {
   console.log('Feathers server listening on localhost:3030');
 });
+
+app.service('messages').create({
+  text: 'Hello world from the server',
+});
