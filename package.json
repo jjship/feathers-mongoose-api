@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@feathersjs/feathers": "^4.5.10"
+    "@feathersjs/express": "^4.5.10",
+    "@feathersjs/feathers": "^4.5.10",
+    "@feathersjs/socketio": "^4.5.10"
   }
 }
