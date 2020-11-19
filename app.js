@@ -36,3 +36,15 @@ app.configure(socketio());
 app.use('/messages', new MessageService());
 
 app.use(express.errorHandler());
+
+// setup socket channels
+app.on('connection', (connection) => {
+  app.channel('everybody').join(connection);
+});
+
+// publish events to channel
+app.publish(() => app.chanel('everybody'));
+
+app.listen(3030).on('listening', () => {
+  console.log('Feathers server listening on localhost:3030');
+});
